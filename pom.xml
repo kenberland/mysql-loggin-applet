@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.reputation.dataret.util</groupId>
+  <artifactId>log-receiver</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>com.reputation.dataret.util.log-receiver</name>
+  <url>http://reputation.com</url>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>onejar-maven-plugin.googlecode.com</id>
+      <url>http://onejar-maven-plugin.googlecode.com/svn/mavenrepo</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <build>
+    <finalName>${artifactId}-${version}</finalName>
+    <plugins>
+    	
+		<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.reputationdefender.dataret.util.log_receiver.LogReceiver</mainClass>
+							<!-- <addClasspath>true</addClasspath> -->
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+		
+		
+		<!-- <plugin>
+                <groupId>org.dstovall</groupId>
+                <artifactId>onejar-maven-plugin</artifactId>
+                <version>1.4.4</version>
+                <executions>
+                    <execution>
+                        <configuration>
+                           
+                        </configuration>
+                        <goals>
+                            <goal>one-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+		-->
+		
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jarsigner-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <keystore>src/main/keystore/signing-jar.keystore</keystore>
+              <alias>mykey</alias>
+              <storepass>foobar</storepass>
+              <keypass>foobar</keypass>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+	  
+	
+	  
+	  
+    </plugins>
+  </build>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+	
+	<!--
+	<dependency>
+       <groupId>log4j</groupId>
+	   <artifactId>log4j</artifactId>
+	   <version>1.2.16</version>
+	</dependency>
+	  -->
+
+	
+  </dependencies>
+  
+</project>
